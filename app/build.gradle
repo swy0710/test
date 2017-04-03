@@ -70,6 +70,6 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.1'
 
     compile 'com.jakewharton:butterknife:8.5.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'    // annotation processing tool 명시를 해줘야 함.
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     testCompile 'junit:junit:4.12'
 }
