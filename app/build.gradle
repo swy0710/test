@@ -1,0 +1,75 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.test"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    dexOptions {
+        jumboMode true
+        javaMaxHeapSize "4g"
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/beans.xml'
+        exclude 'META-INF/MANIFEST.MF'
+        exclude '!META-INF/MANIFEST.MF'
+        exclude 'AndroidManifest.xml'
+        exclude 'about.html'
+    }
+}
+
+repositories {
+    maven { url 'http://4thline.org/m2' }
+    maven { url 'https://github.com/Goddchen/mvn-repo/raw/master' }
+    maven { url "http://dl.bintray.com/populov/maven" }
+    maven { url "https://jitpack.io" }
+    maven { url 'http://maven2.gueck.com/releases' }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    compile 'org.fourthline.cling:cling-core:2.1.1'
+    compile 'org.fourthline.cling:cling-support:2.1.1'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.1'
+
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'    // annotation processing tool 명시를 해줘야 함.
+    testCompile 'junit:junit:4.12'
+}
